@@ -44,4 +44,19 @@ export const GlobalStyle = createGlobalStyle`
   .MuiListItemIcon-root {
       color: #fff !important;
   }
+  .loginContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #F7F8FC;
+    width: 100vw;
+    height: 100vw;
+  }
+  .loginBox {
+    margin: 0px auto;
+    width: 450px;
+    background-color: #fff;
+    text-align: center;
+
+  }
 `;

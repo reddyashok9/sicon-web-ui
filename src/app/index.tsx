@@ -19,6 +19,7 @@ import { Articles } from './containers/Articles';
 import { ReactComponent as ReactLogo } from '../logosidebar.svg';
 import AppMenu from './AppMenu';
 import { Accounts } from './containers/Accounts';
+import { Login } from './containers/Login';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -46,6 +47,7 @@ export function App() {
           </header>
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/articles" component={Articles} />
             <Route exact path="/accounts" component={Accounts} />
             <Route component={NotFoundPage} />

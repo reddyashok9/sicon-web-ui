@@ -1,5 +1,6 @@
 import { ArticlesState } from 'app/containers/Articles/types';
 import { AccountsState } from 'app/containers/Accounts/types';
+import { LoginState } from 'app/containers/Login/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
 /* 
@@ -9,5 +10,6 @@ import { AccountsState } from 'app/containers/Accounts/types';
 export interface RootState {
   articles?: ArticlesState;
   accounts?: AccountsState;
+  login?: LoginState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }
