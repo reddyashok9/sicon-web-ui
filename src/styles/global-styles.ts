@@ -57,6 +57,9 @@ export const GlobalStyle = createGlobalStyle`
     width: 450px;
     background-color: #fff;
     text-align: center;
-
+    padding: 20px 40px;
+    position: absolute;
+    top: calc(50vh - 250px);
+    left: calc(50vw - 225px);
   }
 `;
