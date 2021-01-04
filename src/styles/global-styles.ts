@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Mulish', sans-serif;
   }
 
   #root {
@@ -18,7 +18,6 @@ export const GlobalStyle = createGlobalStyle`
 
   p,
   label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
   }
 
@@ -57,9 +56,15 @@ export const GlobalStyle = createGlobalStyle`
     width: 450px;
     background-color: #fff;
     text-align: center;
-    padding: 20px 40px;
+    padding: 20px 60px;
     position: absolute;
     top: calc(50vh - 250px);
     left: calc(50vw - 225px);
+  }
+  .loginHeaderText {
+    margin: 10px 0;
+  }
+  .textfield {
+    margin: 10px 0;
   }
 `;

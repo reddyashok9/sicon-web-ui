@@ -25,18 +25,38 @@ import { configureAppStore } from 'store/configureStore';
 
 // Initialize languages
 import './locales/i18n';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
 const store = configureAppStore();
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      main: '#05AC72',
+      contrastText: '#fff',
+    },
+    secondary: {
+      // This is green.A700 as hex.
+      main: '#056644',
+    },
+  },
+  typography: {
+    fontFamily: ['Mulish', 'Roboto'].join(','),
+  },
+});
+
 ReactDOM.render(
-  <Provider store={store}>
-    <HelmetProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </HelmetProvider>
-  </Provider>,
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <HelmetProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </HelmetProvider>
+    </Provider>
+  </ThemeProvider>,
   MOUNT_NODE,
 );
 

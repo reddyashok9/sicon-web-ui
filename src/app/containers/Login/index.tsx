@@ -17,17 +17,14 @@ import { messages } from './messages';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { useForm, Controller } from 'react-hook-form';
-import Logo  from '../../../logoonwhite.png';
+import Logo from '../../../logoonwhite.png';
 import { Button } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
+import API from '../../../utils/api';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
-    },
+    root: {},
   }),
 );
 
@@ -45,8 +42,12 @@ export const Login = memo((props: Props) => {
 
   const { control, handleSubmit } = useForm<IFormInput>();
 
-  const onSubmit = (data: IFormInput) => {
+  const onSubmit = async (data: IFormInput) => {
     console.log(data);
+    const auth = await API.post(`auth`, { ...data });
+    API.defaults.headers.common['x-auth-token'] = auth.data.token;
+    const acc = await API.get('account');
+    console.log(acc);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -68,8 +69,16 @@ export const Login = memo((props: Props) => {
         {/*  {t(...messages.someThing)}  */}
         <div className="loginBox">
           <img src={Logo} />
-          <h2>Log In to Portal</h2>
-          <p>Enter your email and password below</p>
+          <Typography
+            variant="h5"
+            color="secondary"
+            className="loginHeaderText"
+          >
+            Log In to Portal
+          </Typography>
+          <Typography variant="caption">
+            Enter your email and password below
+          </Typography>
           <form
             className={classes.root}
             noValidate
@@ -85,6 +94,8 @@ export const Login = memo((props: Props) => {
                   onChange={onChange}
                   value={value}
                   label="Email Address"
+                  fullWidth
+                  className="textfield"
                 />
               )}
             />
@@ -98,10 +109,16 @@ export const Login = memo((props: Props) => {
                   type="password"
                   value={value}
                   label="Password"
+                  fullWidth
+                  className="textfield"
                 />
               )}
             />
-            <Button variant="contained" color="primary" >Submit</Button>
+            <Typography variant="caption">Forgot Password?</Typography>
+            <br /><br />
+            <Button variant="contained" color="primary" type="submit">
+              Submit
+            </Button>
           </form>
         </div>
       </div>

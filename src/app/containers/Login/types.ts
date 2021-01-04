@@ -1,4 +1,8 @@
 /* --- STATE --- */
-export interface LoginState {}
+export interface LoginState {
+  loading: boolean;
+  authenticated: boolean;
+  role: string;
+}
 
 export type ContainerState = LoginState;
