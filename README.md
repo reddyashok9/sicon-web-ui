@@ -10,12 +10,6 @@ cd my-app
 yarn start
 ```
 
-Remove the example app to start your project!
-
-```shell
-yarn run cleanAndSetup
-```
-
 ## Features
 
 <dl>
