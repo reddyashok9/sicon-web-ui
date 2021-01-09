@@ -12,7 +12,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from 'serviceWorker';
-
+import { ThroughProvider } from 'react-through';
 // Use consistent styling
 import 'sanitize.css/sanitize.css';
 
@@ -48,15 +48,17 @@ const theme = createMuiTheme({
 });
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <Provider store={store}>
-      <HelmetProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </HelmetProvider>
-    </Provider>
-  </ThemeProvider>,
+  <ThroughProvider>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <HelmetProvider>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </HelmetProvider>
+      </Provider>
+    </ThemeProvider>
+  </ThroughProvider>,
   MOUNT_NODE,
 );
 

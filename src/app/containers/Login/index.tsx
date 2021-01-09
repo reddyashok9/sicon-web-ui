@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
-import { reducer, sliceKey } from './slice';
+import { reducer, sliceKey, loginActions } from './slice';
 import { selectLogin } from './selectors';
 import { loginSaga } from './saga';
 import { messages } from './messages';
@@ -21,6 +21,8 @@ import Logo from '../../../logoonwhite.png';
 import { Button } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import API from '../../../utils/api';
+import { useHistory } from 'react-router-dom';
+import jwtDecode from 'jwt-decode'; //you must install jwt-decode using npm
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,19 +43,28 @@ export const Login = memo((props: Props) => {
   const classes = useStyles();
 
   const { control, handleSubmit } = useForm<IFormInput>();
+  let history = useHistory();
+  const dispatch = useDispatch();
 
   const onSubmit = async (data: IFormInput) => {
     console.log(data);
     const auth = await API.post(`auth`, { ...data });
-    API.defaults.headers.common['x-auth-token'] = auth.data.token;
-    const acc = await API.get('account');
-    console.log(acc);
+    if (auth) {
+      API.defaults.headers.common['x-auth-token'] = auth.data.token;
+      localStorage.setItem('token', `${auth.data.token}`);
+      const decodedToken: any = jwtDecode(auth.data.token);
+      localStorage.setItem('role', `${decodedToken.role}`);
+
+      dispatch(loginActions.setAuth);
+      history.push('/');
+    } else {
+      console.log('Do Something');
+    }
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const login = useSelector(selectLogin);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const dispatch = useDispatch();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { t, i18n } = useTranslation();
@@ -115,7 +126,8 @@ export const Login = memo((props: Props) => {
               )}
             />
             <Typography variant="caption">Forgot Password?</Typography>
-            <br /><br />
+            <br />
+            <br />
             <Button variant="contained" color="primary" type="submit">
               Submit
             </Button>

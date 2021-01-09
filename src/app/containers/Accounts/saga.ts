@@ -1,16 +1,16 @@
 import { take, call, put, select, takeLatest, delay } from 'redux-saga/effects';
 import { accountsActions } from './slice';
-import { request } from 'utils/request';
+import API from 'utils/api';
 
 export function* getAccounts() {
   yield delay(500);
-  const requestURL = `https://api.github.com/users/reddyashok9/repos?type=all&sort=updated`;
 
   try {
     // Call our request helper (see 'utils/request')
-    const accounts: any[] = yield call(request, requestURL);
-    if (accounts?.length > 0) {
-      yield put(accountsActions.accountsLoaded(accounts));
+    const accounts: any = yield API.get(`account`);
+    console.log(accounts.data);
+    if (accounts?.data.length > 0) {
+      yield put(accountsActions.accountsLoaded(accounts?.data));
     } else {
       // yield put(actions.repoError(RepoErrorType.USER_HAS_NO_REPO));
     }

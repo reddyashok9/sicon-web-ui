@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter, NavLink } from 'react-router-dom';
 
 import { GlobalStyle } from 'styles/global-styles';
 
@@ -20,6 +20,9 @@ import { ReactComponent as ReactLogo } from '../logosidebar.svg';
 import AppMenu from './AppMenu';
 import { Accounts } from './containers/Accounts';
 import { Login } from './containers/Login';
+import { PrivateRoute } from './components/PrivateRoute';
+import { Typography } from '@material-ui/core';
+import { Breadcrumbs } from 'react-breadcrumbs-dynamic';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -42,14 +45,33 @@ export function App() {
         </div>
         <div className="mainContainer">
           <header>
-            <div className="headerLeft">Dashboard</div>
-            <div className="headerRight"></div>
+            <div className="headerLeft">
+              <Breadcrumbs
+                separator={<b> {`>`} </b>}
+                item={NavLink}
+                finalItem={'b'}
+                finalProps={{
+                  style: { color: '#05AC72' },
+                }}
+              />
+            </div>
+            <div className="headerRight">
+              <div className="profileInfo">
+                <div className="nameContainer">
+                  <Typography variant="body2">Ashok Reddy</Typography>
+                  <Typography variant="caption">Super Admin</Typography>
+                </div>
+                <div className="profilePic">
+                  <img src="" alt="" />
+                </div>
+              </div>
+            </div>
           </header>
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            <PrivateRoute exact path="/" component={HomePage} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/articles" component={Articles} />
-            <Route exact path="/accounts" component={Accounts} />
+            <PrivateRoute exact path="/accounts" component={Accounts} />
             <Route component={NotFoundPage} />
           </Switch>
         </div>

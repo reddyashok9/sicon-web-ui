@@ -34,11 +34,14 @@ export const GlobalStyle = createGlobalStyle`
     height: 100vh;
     background-color: #05AC72;
     width: 255px;
+    color: #fff;
     .logoContainer {
       padding: 30px;
     }
   }
   .mainContainer {
+    width: calc(100vw - 255px);
+    
   }
   .MuiListItemIcon-root {
       color: #fff !important;
@@ -66,5 +69,31 @@ export const GlobalStyle = createGlobalStyle`
   }
   .textfield {
     margin: 10px 0;
+  }
+  header {
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  }
+  header > div  {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    padding: 20px 20px 0px 20px;
+  }
+  .headerRight {
+    align-items: flex-end;
+  }
+  .dataTableContainer {
+    margin: 20px;
+  }
+  .actionBar {
+    align-items: flex-end;
+    position: absolute;
+    right: 295px;
+    top: 121px;
+    z-index: 999;
   }
 `;

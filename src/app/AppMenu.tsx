@@ -18,39 +18,59 @@ const appMenuItems = [
     Icon: IconDashboard,
   },
   {
-    name: 'Orders',
-    link: '/orders',
-    Icon: IconShoppingCart,
-  },
-  {
-    name: 'Customers',
-    link: '/customers',
-    Icon: IconPeople,
-  },
-  {
-    name: 'Reports',
-    link: '/reports',
-    Icon: IconBarChart,
-  },
-  {
-    name: 'Nested Pages',
+    name: 'Articles',
     Icon: IconLibraryBooks,
     items: [
       {
-        name: 'Level 2',
+        name: 'Client',
       },
       {
-        name: 'Level 2',
-        items: [
-          {
-            name: 'Level 3',
-          },
-          {
-            name: 'Level 3',
-          },
-        ],
+        name: 'Supplier',
+      },
+      {
+        name: 'Farmer',
+      },
+      {
+        name: 'Product',
       },
     ],
+  },
+  {
+    name: 'Stock',
+    Icon: IconLibraryBooks,
+    items: [
+      {
+        name: 'By Supplier',
+      },
+      {
+        name: 'By Client',
+      },
+    ],
+  },
+  {
+    name: 'Dispatch Records',
+    Icon: IconLibraryBooks,
+  },
+  {
+    name: 'Sales',
+    Icon: IconLibraryBooks,
+  },
+  {
+    name: 'Cost Entry',
+    Icon: IconLibraryBooks,
+  },
+  {
+    name: 'Reports',
+    Icon: IconLibraryBooks,
+  },
+  {
+    name: 'User Management',
+    Icon: IconLibraryBooks,
+  },
+  {
+    name: 'Account Management',
+    Icon: IconLibraryBooks,
+    link: '/accounts',
   },
 ];
 

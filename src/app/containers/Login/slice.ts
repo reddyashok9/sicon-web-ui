@@ -32,7 +32,7 @@ const loginSlice = createSlice({
     },
     setUserRole(state, action: PayloadAction<string>) {
       state.role = action.payload;
-    }
+    },
   },
 });
 
