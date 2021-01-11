@@ -8,18 +8,26 @@ import IconShoppingCart from '@material-ui/icons/ShoppingCart';
 import IconPeople from '@material-ui/icons/People';
 import IconBarChart from '@material-ui/icons/BarChart';
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks';
-
+import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
+import EuroOutlinedIcon from '@material-ui/icons/EuroOutlined';
+import TrendingUpOutlinedIcon from '@material-ui/icons/TrendingUpOutlined';
+import MoneyOutlinedIcon from '@material-ui/icons/MoneyOutlined';
+import PeopleOutlinedIcon from '@material-ui/icons/PeopleOutlined';
+import DomainOutlinedIcon from '@material-ui/icons/DomainOutlined';
+import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
+import GridOnOutlinedIcon from '@material-ui/icons/GridOnOutlined';
+import PlaylistAddCheckOutlinedIcon from '@material-ui/icons/PlaylistAddCheckOutlined';
 import AppMenuItem from './AppMenuItem';
 
 const appMenuItems = [
   {
     name: 'Dashboard',
     link: '/',
-    Icon: IconDashboard,
+    Icon: DashboardOutlinedIcon,
   },
   {
     name: 'Articles',
-    Icon: IconLibraryBooks,
+    Icon: AssignmentOutlinedIcon,
     items: [
       {
         name: 'Client',
@@ -37,7 +45,7 @@ const appMenuItems = [
   },
   {
     name: 'Stock',
-    Icon: IconLibraryBooks,
+    Icon: GridOnOutlinedIcon,
     items: [
       {
         name: 'By Supplier',
@@ -49,27 +57,27 @@ const appMenuItems = [
   },
   {
     name: 'Dispatch Records',
-    Icon: IconLibraryBooks,
+    Icon: PlaylistAddCheckOutlinedIcon,
   },
   {
     name: 'Sales',
-    Icon: IconLibraryBooks,
+    Icon: MoneyOutlinedIcon,
   },
   {
     name: 'Cost Entry',
-    Icon: IconLibraryBooks,
+    Icon: EuroOutlinedIcon,
   },
   {
     name: 'Reports',
-    Icon: IconLibraryBooks,
+    Icon: TrendingUpOutlinedIcon,
   },
   {
     name: 'User Management',
-    Icon: IconLibraryBooks,
+    Icon: PeopleOutlinedIcon,
   },
   {
     name: 'Account Management',
-    Icon: IconLibraryBooks,
+    Icon: DomainOutlinedIcon,
     link: '/accounts',
   },
 ];
